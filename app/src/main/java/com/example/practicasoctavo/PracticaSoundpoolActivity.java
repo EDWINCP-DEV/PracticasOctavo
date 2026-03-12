@@ -17,13 +17,15 @@ public class PracticaSoundpoolActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practica_soundpool);
 
-        soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(3)
+                .build();
 
-        idgrito = soundPool.load(this, R.raw.grito, 0);
-        idherida = soundPool.load(this, R.raw.herida, 0);
-        idqueja = soundPool.load(this, R.raw.queja, 0);
-        idsalto = soundPool.load(this, R.raw.salto, 0);
-        idsuspiro = soundPool.load(this, R.raw.suspiro, 0);
+        idgrito = soundPool.load(this, R.raw.grito, 2);
+        idherida = soundPool.load(this, R.raw.herida, 1);
+        idqueja = soundPool.load(this, R.raw.queja, 4);
+        idsalto = soundPool.load(this, R.raw.salto, 5);
+        idsuspiro = soundPool.load(this, R.raw.suspiro, 3);
     }
 
     // Métodos para los 5 botones

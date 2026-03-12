@@ -17,4 +17,14 @@ public class MenuPracticas extends AppCompatActivity {
         Intent intent = new Intent(this, PracticaSoundpoolActivity.class);
         startActivity(intent);
     }
+
+    public void abrirMediaRecorder(View v) {
+        Intent intent = new Intent(this, MediaRecorderActivity.class);
+        startActivity(intent);
+    }
+
+    public void abrirVideoView(View v) {
+        Intent intent = new Intent(this, VideoActivity.class);
+        startActivity(intent);
+    }
 }
