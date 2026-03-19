@@ -28,8 +28,9 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        android.os.StrictMode.VmPolicy.Builder builder = new android.os.StrictMode.VmPolicy.Builder();
-        android.os.StrictMode.setVmPolicy(builder.build());
+        //seguridad de integracion
+        //android.os.StrictMode.VmPolicy.Builder builder = new android.os.StrictMode.VmPolicy.Builder();
+        //android.os.StrictMode.setVmPolicy(builder.build());
 
         videoView = findViewById(R.id.videoView);
         configurarControles();
@@ -70,7 +71,6 @@ public class VideoActivity extends AppCompatActivity {
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "prueba_video.mp4");
 
         if (file.exists()) {
-            // Importante: No uses Uri.fromFile, usa Uri.parse con el path para evitar bloqueos
             uriActual = Uri.parse(file.getAbsolutePath());
             posicionActual = 0;
             prepararVideo(uriActual, "Almacenamiento Interno");
@@ -102,24 +102,24 @@ public class VideoActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        posicionActual = videoView.getCurrentPosition();
-        setContentView(R.layout.activity_video);
-        videoView = findViewById(R.id.videoView);
-        configurarControles();
-        if (uriActual != null) {
-            prepararVideo(uriActual, "Rotación de pantalla");
+        @Override
+        public void onConfigurationChanged(@NonNull Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            posicionActual = videoView.getCurrentPosition();
+            setContentView(R.layout.activity_video);
+            videoView = findViewById(R.id.videoView);
+            configurarControles();
+            if (uriActual != null) {
+                prepararVideo(uriActual, "Rotación de pantalla");
+            }
         }
-    }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("posicion_video", videoView.getCurrentPosition());
-        if (uriActual != null) {
-            outState.putString("uri_video", uriActual.toString());
+        @Override
+        protected void onSaveInstanceState(@NonNull Bundle outState) {
+            super.onSaveInstanceState(outState);
+            outState.putInt("posicion_video", videoView.getCurrentPosition());
+            if (uriActual != null) {
+                outState.putString("uri_video", uriActual.toString());
+            }
         }
-    }
 }

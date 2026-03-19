@@ -69,7 +69,6 @@ public class MediaRecorderActivity extends AppCompatActivity {
             grabadora.prepare();
             grabadora.start();
 
-            // Configuración visual al iniciar
             cronometro.setBase(SystemClock.elapsedRealtime());
             cronometro.start();
             btnGrabar.setEnabled(false);
@@ -84,7 +83,6 @@ public class MediaRecorderActivity extends AppCompatActivity {
 
     public void pausarGrabacion(View view) {
         if (grabadora != null) {
-            // pause() y resume() requieren API 24 (Android 7.0)
             if (!estaPausado) {
                 grabadora.pause();
                 estaPausado = true;
@@ -113,7 +111,6 @@ public class MediaRecorderActivity extends AppCompatActivity {
             grabadora.release();
             grabadora = null;
 
-            // Reset visual
             cronometro.stop();
             cronometro.setBase(SystemClock.elapsedRealtime());
             btnGrabar.setEnabled(true);

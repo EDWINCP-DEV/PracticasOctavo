@@ -27,4 +27,9 @@ public class MenuPracticas extends AppCompatActivity {
         Intent intent = new Intent(this, VideoActivity.class);
         startActivity(intent);
     }
+
+    public void abrirMediaPlayer(View v) {
+        Intent intent = new Intent(this, MediaPlayerActivity.class);
+        startActivity(intent);
+    }
 }
