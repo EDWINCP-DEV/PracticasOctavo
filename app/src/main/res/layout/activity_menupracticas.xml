@@ -1,79 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDDD3F"
-    tools:context=".MenuPracticas">
+    android:background="#121212"
+    android:padding="24dp">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Menú de Prácticas"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Laboratorio TIC"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"/>
 
-    <Button
-        android:id="@+id/btn_soundpool"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:text="Práctica 1: SoundPool"
-        android:onClick="abrirSoundPool"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:text="Selecciona una unidad de práctica"
+        android:textColor="#88FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <Button
-        android:id="@+id/btn_mediarecorder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:text="Práctica 2: MediaRecorder"
-        android:onClick="abrirMediaRecorder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_soundpool" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <Button
-        android:id="@+id/btn_videoview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:text="Práctica 3: VideoView"
-        android:onClick="abrirVideoView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_mediarecorder" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_mediaplayer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:text="Práctica 4: MediaPlayer"
-        android:onClick="abrirMediaPlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_videoview" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_p1"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                android:text="Práctica 1: SoundPool"
+                android:textAlignment="viewStart"
+                android:textColor="#FFFFFF"
+                android:onClick="abrirSoundPool"
+                app:backgroundTint="#1E1E1E"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/ic_lock_silent_mode_off"
+                app:iconPadding="16dp"
+                app:iconSize="30dp"
+                app:iconTint="#BB86FC" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_p2"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                android:text="Práctica 2: MediaRecorder"
+                android:textAlignment="viewStart"
+                android:textColor="#FFFFFF"
+                android:onClick="abrirMediaRecorder"
+                app:backgroundTint="#1E1E1E"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/ic_btn_speak_now"
+                app:iconPadding="16dp"
+                app:iconSize="30dp"
+                app:iconTint="#03DAC5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_p3"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                android:text="Práctica 3: VideoView"
+                android:textAlignment="viewStart"
+                android:textColor="#FFFFFF"
+                android:onClick="abrirVideoView"
+                app:backgroundTint="#1E1E1E"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/presence_video_online"
+                app:iconPadding="16dp"
+                app:iconSize="30dp"
+                app:iconTint="#CF6679" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_p4"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                android:text="Práctica 4: MediaPlayer"
+                android:textAlignment="viewStart"
+                android:textColor="#FFFFFF"
+                android:onClick="abrirMediaPlayer"
+                app:backgroundTint="#1E1E1E"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/ic_media_play"
+                app:iconPadding="16dp"
+                app:iconSize="30dp"
+                app:iconTint="#FFAB40" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_p5"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="12dp"
+                android:text="Práctica 5: Multimedia Pro"
+                android:textAlignment="viewStart"
+                android:textColor="#FFFFFF"
+                android:onClick="abrirMultimediaPlayer"
+                app:backgroundTint="#1E1E1E"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/ic_menu_slideshow"
+                app:iconPadding="16dp"
+                app:iconSize="30dp"
+                app:iconTint="#4CAF50" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

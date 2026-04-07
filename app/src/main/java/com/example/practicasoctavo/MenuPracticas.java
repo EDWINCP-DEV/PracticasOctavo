@@ -12,24 +12,23 @@ public class MenuPracticas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menupracticas);
     }
-
     public void abrirSoundPool(View v) {
-        Intent intent = new Intent(this, PracticaSoundpoolActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, PracticaSoundpoolActivity.class));
     }
 
     public void abrirMediaRecorder(View v) {
-        Intent intent = new Intent(this, MediaRecorderActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MediaRecorderActivity.class));
     }
 
     public void abrirVideoView(View v) {
-        Intent intent = new Intent(this, VideoActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, VideoActivity.class));
     }
 
     public void abrirMediaPlayer(View v) {
-        Intent intent = new Intent(this, MediaPlayerActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MediaPlayerActivity.class));
+    }
+
+    public void abrirMultimediaPlayer(View v) {
+        startActivity(new Intent(this, MultimediaPlayerActivity.class));
     }
 }

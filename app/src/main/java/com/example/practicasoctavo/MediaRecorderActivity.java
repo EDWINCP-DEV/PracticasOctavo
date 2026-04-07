@@ -32,7 +32,6 @@ public class MediaRecorderActivity extends AppCompatActivity {
     private String archivoActual;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
 
-    // Variables para el control visual
     private Chronometer cronometro;
     private Button btnPausar, btnGrabar;
     private boolean estaPausado = false;
@@ -43,7 +42,6 @@ public class MediaRecorderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_recorder);
 
-        // Vincular vistas
         cronometro = findViewById(R.id.cronometro);
         btnPausar = findViewById(R.id.btnPausar);
         btnGrabar = findViewById(R.id.btnGrabar);
