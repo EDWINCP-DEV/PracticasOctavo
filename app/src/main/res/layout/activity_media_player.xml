@@ -8,12 +8,11 @@
     android:background="#121212"
     tools:context=".MediaPlayerActivity">
 
-
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="24dp"
         android:text="C1_AF05 - MediaPlayer"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -22,15 +21,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivAlbumArt"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_music"
-        app:layout_constraintBottom_toTopOf="@+id/btnPlay"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swModoExterno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Modo Almacenamiento"
+        android:textColor="#B0BEC5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSeleccionarArchivo"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar Música"
+        android:textColor="#4CAF50"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swModoExterno"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/ivAlbumArt"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_music"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSeleccionarArchivo"
+        app:layout_constraintVertical_bias="0.3"
         app:tint="#4CAF50" />
 
     <SeekBar
@@ -39,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/btnPlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -51,9 +76,9 @@
         android:text="00:00 / 00:00"
         android:textColor="#B0BEC5"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="@+id/seekBar"
-        app:layout_constraintStart_toStartOf="@+id/seekBar" />
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnPlay"
@@ -62,84 +87,73 @@
         android:onClick="reproducirAudio"
         android:src="@drawable/ic_play"
         app:backgroundTint="#4CAF50"
-        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="#FFFFFF"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRewind"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="retroceder15"
-        app:icon="@android:drawable/ic_media_rew"
-        app:iconSize="28dp"
-        app:iconTint="#B0BEC5"
-        app:layout_constraintBottom_toBottomOf="@+id/btnStop"
-        app:layout_constraintEnd_toStartOf="@+id/btnStop"
-        app:layout_constraintTop_toTopOf="@+id/btnStop"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintVertical_bias="0.85"
+        app:tint="#FFFFFF" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStop"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginEnd="16dp"
         android:onClick="detenerAudio"
-        app:cornerRadius="30dp"
+        app:cornerRadius="28dp"
         app:icon="@drawable/ic_stop"
-        app:iconSize="24dp"
         app:iconTint="#F44336"
         app:layout_constraintBottom_toBottomOf="@+id/btnPlay"
         app:layout_constraintEnd_toStartOf="@+id/btnPlay"
         app:layout_constraintTop_toTopOf="@+id/btnPlay"
-        app:strokeColor="#F44336"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:strokeColor="#F44336" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPausa"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:onClick="pausarAudio"
-        app:cornerRadius="30dp"
+        app:cornerRadius="28dp"
         app:icon="@drawable/ic_pause"
-        app:iconSize="24dp"
         app:iconTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="@+id/btnPlay"
         app:layout_constraintStart_toEndOf="@+id/btnPlay"
         app:layout_constraintTop_toTopOf="@+id/btnPlay"
-        app:strokeColor="#FF9800"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:strokeColor="#FF9800" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRewind"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:onClick="retroceder15"
+        app:icon="@android:drawable/ic_media_rew"
+        app:iconTint="#B0BEC5"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStop"
+        app:layout_constraintEnd_toStartOf="@+id/btnStop"
+        app:layout_constraintTop_toTopOf="@+id/btnStop" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnForward"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:onClick="adelantar15"
         app:icon="@android:drawable/ic_media_ff"
-        app:iconSize="28dp"
         app:iconTint="#B0BEC5"
         app:layout_constraintBottom_toBottomOf="@+id/btnPausa"
         app:layout_constraintStart_toEndOf="@+id/btnPausa"
-        app:layout_constraintTop_toTopOf="@+id/btnPausa"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toTopOf="@+id/btnPausa" />
 
     <TextView
         android:id="@+id/tvEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="Listo para reproducir"
+        android:layout_marginBottom="16dp"
+        android:text="Listo"
         android:textColor="#B0BEC5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

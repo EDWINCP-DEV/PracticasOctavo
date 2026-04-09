@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
-    android:padding="16dp"
-    tools:context=".MediaPlayerActivity">
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/ivAlbumArt"
@@ -18,7 +17,7 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.4"
+        app:layout_constraintWidth_percent="0.35"
         app:tint="#4CAF50" />
 
     <TextView
@@ -27,11 +26,38 @@
         android:layout_height="wrap_content"
         android:text="C1_AF05 - MediaPlayer"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivAlbumArt"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swModoExterno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modo Dispositivo"
+        android:textColor="#B0BEC5"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnSeleccionarArchivo"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/ivAlbumArt"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSeleccionarArchivo"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:text="Seleccionar"
+        android:textColor="#4CAF50"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/swModoExterno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/swModoExterno"
+        app:layout_constraintTop_toTopOf="@+id/swModoExterno"
+        tools:visibility="visible" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -42,7 +68,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnPlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivAlbumArt"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/swModoExterno" />
 
     <TextView
         android:id="@+id/tvTiempo"
@@ -50,7 +76,7 @@
         android:layout_height="wrap_content"
         android:text="00:00 / 00:00"
         android:textColor="#B0BEC5"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="@+id/seekBar"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
@@ -61,20 +87,21 @@
         android:onClick="reproducirAudio"
         android:src="@drawable/ic_play"
         app:backgroundTint="#4CAF50"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivAlbumArt"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:tint="#FFFFFF" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStop"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="8dp"
         android:onClick="detenerAudio"
-        app:cornerRadius="27dp"
+        app:cornerRadius="22dp"
         app:icon="@drawable/ic_stop"
         app:iconTint="#F44336"
         app:layout_constraintBottom_toBottomOf="@+id/btnPlay"
@@ -85,11 +112,11 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPausa"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
         android:onClick="pausarAudio"
-        app:cornerRadius="27dp"
+        app:cornerRadius="22dp"
         app:icon="@drawable/ic_pause"
         app:iconTint="#FF9800"
         app:layout_constraintBottom_toBottomOf="@+id/btnPlay"
@@ -100,8 +127,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRewind"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:onClick="retroceder15"
         app:icon="@android:drawable/ic_media_rew"
         app:iconTint="#B0BEC5"
@@ -112,8 +139,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnForward"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:onClick="adelantar15"
         app:icon="@android:drawable/ic_media_ff"
         app:iconTint="#B0BEC5"
@@ -127,7 +154,7 @@
         android:layout_height="wrap_content"
         android:text="Listo"
         android:textColor="#B0BEC5"
-        android:textSize="11sp"
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

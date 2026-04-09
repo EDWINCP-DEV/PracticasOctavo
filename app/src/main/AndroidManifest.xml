@@ -27,7 +27,6 @@
             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"/>
         <activity
             android:name=".MediaPlayerActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
             android:exported="false" />
         <activity
             android:name=".VideoActivity"
